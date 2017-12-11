@@ -1,0 +1,15 @@
+
+spring:
+  h2:
+    console:
+      path: "/h2"
+      enabled: true
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: "jdbc:h2:file:~/Feedback"
+    username: "admin"
+    password: ""
+  jpa:
+    show-sql: true
+server:
+  port: 8098
