@@ -1,6 +1,9 @@
 package com.mytry.feedback.entity;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Feedback {
@@ -8,41 +11,57 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToOne
-    private User user;
-    private String feedback;
-    private String address;
-    private Integer rating;
+    private String authorEmail;
+    private String summary;
+    private String description;
+    private String subject;
+    private Boolean recommend;
 
-    public User getUser() {
-        return user;
+    public String getAuthorEmail() {
+        return authorEmail;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAuthorEmail(String authorEmail) {
+        this.authorEmail = authorEmail;
     }
 
-    public String getFeedback() {
-        return feedback;
+    public Integer getId() {
+        return id;
     }
 
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public String getSummary() {
+        return summary;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setSummary(String summary) {
+        this.summary = summary;
     }
 
-    public Integer getRating() {
-        return rating;
+    public String getDescription() {
+        return description;
     }
 
-    public void setRating(Integer rating) {
-        this.rating = rating;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
+    }
+
+    public Boolean getRecommend() {
+        return recommend;
+    }
+
+    public void setRecommend(Boolean recommend) {
+        this.recommend = recommend;
     }
 }
