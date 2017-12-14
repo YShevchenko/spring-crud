@@ -11,18 +11,18 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String authorEmail;
+    private String author;
     private String summary;
     private String description;
     private String subject;
     private Boolean recommend;
 
-    public String getAuthorEmail() {
-        return authorEmail;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setAuthorEmail(String authorEmail) {
-        this.authorEmail = authorEmail;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Integer getId() {
