@@ -13,7 +13,7 @@ public class Feedback {
     private Integer id;
     private String author;
     private String summary;
-    private String description;
+    private String content;
     private String subject;
     private Boolean recommend;
 
@@ -41,12 +41,12 @@ public class Feedback {
         this.summary = summary;
     }
 
-    public String getDescription() {
-        return description;
+    public String getContent() {
+        return content;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getSubject() {

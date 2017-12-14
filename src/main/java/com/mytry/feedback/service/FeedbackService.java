@@ -39,4 +39,8 @@ public class FeedbackService {
             return foundFeedback;
         }
     }
+
+    public List<Feedback> searchBySubjectContains(String subject){
+        return feedbackRepository.findBySubjectContains(subject);
+    }
 }

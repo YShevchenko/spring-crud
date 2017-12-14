@@ -5,10 +5,8 @@
 
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Bootstrap Template</title>
 
     <!-- Bootstrap core CSS -->
     <link href="http://cdn.jsdelivr.net/webjars/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
@@ -34,16 +32,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home
-                        <span class="sr-only">(current)</span>
-                    </a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/feedbacks}">See feedbacks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Submit feedback</a>
+                    <a class="nav-link" th:href="@{/feedbacks/submit}">Submit feedback</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" th:href="@{/about}">About</a>
                 </li>
             </ul>
         </div>
