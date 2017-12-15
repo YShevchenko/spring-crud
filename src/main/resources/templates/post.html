@@ -27,7 +27,7 @@
             <p th:text="${'Submitted by ' + feedback.author}" class="lead">Author</p>
 
             <hr/>
-            
+
             <!--Recommend-->
             <div th:if="${feedback.recommend}">
                 <p class="lead">Recommend: YES</p>
@@ -56,17 +56,20 @@
         <div class="col-md-4">
 
             <!-- Search Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Search</h5>
-                <div class="card-body">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Enter feedback subject..."/>
-                        <span class="input-group-btn">
-                  <button class="btn btn-secondary" type="button">Go!</button>
+            <form th:action="@{/feedbacks/search}" method="get">
+                <div class="card my-4">
+                    <h5 class="card-header">Search</h5>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="query"
+                                   placeholder="Enter feedback subject ... "/>
+                            <span class="input-group-btn">
+                  <button class="btn btn-secondary" type="submit">Go!</button>
                 </span>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
 
         </div>
 
