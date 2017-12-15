@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <th:block th:include="layout/header"></th:block>
+</head>
+<body>
+
+<!--Input form-->
+<div class="feedback-form mx-auto">
+    <form class="form-horizontal" th:object="${feedback}" th:action="@{/feedbacks}" method="post">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Author:</label>
+            <div class="col-sm-6">
+                <input id="author" type="text" class="form-control" th:field="*{author}"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('author')}"
+                      th:errors="*{author}">Author error</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Review subject:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" th:field="*{subject}"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('subject')}"
+                      th:errors="*{subject}">Subject error</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Short summary:</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" th:field="*{summary}"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('summary')}"
+                      th:errors="*{summary}">Summary error</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Detailed description:</label>
+            <div class="col-sm-6">
+                <textarea type="text" class="form-control" rows="5" th:field="*{content}"/>
+                <span class="text-danger" th:if="${#fields.hasErrors('content')}"
+                      th:errors="*{content}">Content error</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">Will you recommend review subject to a friend?</label>
+            <input type="checkbox" class="form-check-input" th:field="*{recommend}"/>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+</body>
+</html>

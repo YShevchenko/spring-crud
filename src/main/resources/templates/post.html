@@ -3,88 +3,91 @@
 
 <head lang="en">
 
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-  <title>Blog Home - Start Bootstrap Template</title>
-  <th:block th:include="layout/header"></th:block>
+    <title>Blog Home - Start Bootstrap Template</title>
+    <th:block th:include="layout/header"></th:block>
 </head>
 
 <body>
 
 <!-- Page Content -->
-    <div class="container">
+<div class="container">
 
-      <div class="row">
+    <div class="row">
 
         <!-- Post Content Column -->
         <div class="col-lg-8">
 
-          <!-- Title -->
-          <h1 th:text="${feedback.subject}" class="mt-4">Review Subject</h1>
+            <!-- Title -->
+            <h1 th:text="'Feedback for: ' + ${feedback.subject}" class="mt-4">Review Subject</h1>
 
-          <!-- Author -->
-          <p th:text="${'By ' + feedback.author}" class="lead">Author</p>
+            <!-- Author -->
+            <p th:text="${'Submitted by ' + feedback.author}" class="lead">Author</p>
 
-          <!--Recommend-->
-          <div th:if="${feedback.recommend}">
-            <p class="lead">Recommend: YES</p>
-          </div>
-          <!-- ELSE -->
-          <div th:unless="${feedback.recommend}">
-            <p class="lead">Recommend: NO</p>
-          </div>
+            <hr/>
+            
+            <!--Recommend-->
+            <div th:if="${feedback.recommend}">
+                <p class="lead">Recommend: YES</p>
+            </div>
+            <!-- ELSE -->
+            <div th:unless="${feedback.recommend}">
+                <p class="lead">Recommend: NO</p>
+            </div>
 
-          <!--Summary-->
+            <!--Summary-->
 
-          <hr/>
-          <p th:text="${feedback.summary}">Summary</p>
-          <hr/>
+            <hr/>
+            <label class="col-sm-2 control-label">Summary:</label>
+            <p th:text="${feedback.summary}">Summary</p>
+            <hr/>
 
-          <!-- Post Content -->
+            <!-- Post Content -->
+            <label class="col-sm-2 control-label">Details:</label>
+            <p th:text="${feedback.content}">Text</p>
 
-          <p th:text="${feedback.content}">Text</p>
-
-          <hr/>
+            <hr/>
 
         </div>
 
         <!-- Sidebar Widgets Column -->
         <div class="col-md-4">
 
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header">Search</h5>
-            <div class="card-body">
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Enter feedback subject..."/>
-                <span class="input-group-btn">
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Enter feedback subject..."/>
+                        <span class="input-group-btn">
                   <button class="btn btn-secondary" type="button">Go!</button>
                 </span>
-              </div>
+                    </div>
+                </div>
             </div>
-          </div>
 
         </div>
 
-      </div>
-      <!-- /.row -->
+    </div>
+    <!-- /.row -->
 
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
     </div>
     <!-- /.container -->
+</footer>
 
-    <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-      </div>
-      <!-- /.container -->
-    </footer>
+<!-- Bootstrap core JavaScript -->
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  </body>
+</body>
 
 </html>

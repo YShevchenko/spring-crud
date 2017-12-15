@@ -2,14 +2,18 @@ package com.mytry.feedback.controller;
 
 import com.mytry.feedback.entity.Feedback;
 import com.mytry.feedback.service.FeedbackService;
+import org.springframework.boot.context.config.ResourceNotFoundException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+
+import javax.validation.Valid;
 
 @Controller
+@RequestMapping(value = "/feedbacks")
 public class FeedbackMvcController {
 
     private FeedbackService feedbackService;
@@ -18,36 +22,34 @@ public class FeedbackMvcController {
         this.feedbackService = feedbackService;
     }
 
-    @GetMapping(path = "/")
-    public String redirectFromRootPage() {
-        return "redirect:/feedbacks";
-    }
-
-    @GetMapping(path = "/feedbacks")
+    @GetMapping
     public String getAllFeedbacks(Model model) {
         model.addAttribute("feedbacks", feedbackService.getAllFeedbacks());
         return "feedbacks";
     }
 
-    @GetMapping(path = "/feedbacks/{id}")
+    @GetMapping(path = "/{id}")
     public String getFeedback(Model model, @PathVariable("id") Integer id) {
-        model.addAttribute("feedback", feedbackService.getFeedback(id));
-        return "post";
+            model.addAttribute("feedback", feedbackService.getFeedback(id));
+            return "post";
     }
 
-    @GetMapping(path = "/feedbacks/submit")
+    @GetMapping(path = "/new")
     public String createFeedback(Model model) {
         model.addAttribute("feedback", new Feedback());
-        return "submit";
+        return "newfeedback";
     }
 
-    @PostMapping(path = "/feedbacks")
-    public String submitFeedback(Feedback feedback) {
+    @PostMapping
+    public String submitFeedback(@Valid Feedback feedback, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()){
+            return "newfeedback";
+        }
         feedbackService.saveFeedback(feedback);
         return "redirect:/feedbacks";
     }
 
-    @GetMapping(path = "/feedbacks/search")
+    @GetMapping(path = "/search")
     public String searchFeedbacksBySubject(Model model, @RequestParam("query") String subject) {
         model.addAttribute("feedbacks", feedbackService.searchBySubjectContains(subject));
         return "feedbacks";

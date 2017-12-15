@@ -1,9 +1,10 @@
 package com.mytry.feedback.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Objects;
 
 @Entity
 public class Feedback {
@@ -11,9 +12,20 @@ public class Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @NotNull
+    @Size(min=3, max=30)
     private String author;
+
+    @NotNull
+    @Size(max=200)
     private String summary;
+    @Column(length = 2000)
+    @Size(max = 2000)
     private String content;
+
+    @NotNull
+    @Size(min=3, max=30)
     private String subject;
     private Boolean recommend;
 
@@ -63,5 +75,35 @@ public class Feedback {
 
     public void setRecommend(Boolean recommend) {
         this.recommend = recommend;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Feedback feedback = (Feedback) o;
+        return Objects.equals(id, feedback.id) &&
+                Objects.equals(author, feedback.author) &&
+                Objects.equals(summary, feedback.summary) &&
+                Objects.equals(content, feedback.content) &&
+                Objects.equals(subject, feedback.subject) &&
+                Objects.equals(recommend, feedback.recommend);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, author, summary, content, subject, recommend);
+    }
+
+    @Override
+    public String toString() {
+        return "Feedback{" +
+                "id=" + id +
+                ", author='" + author + '\'' +
+                ", summary='" + summary + '\'' +
+                ", content='" + content + '\'' +
+                ", subject='" + subject + '\'' +
+                ", recommend=" + recommend +
+                '}';
     }
 }

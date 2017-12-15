@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -31,12 +32,12 @@ public class FeedbackController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<Feedback> addFeedback(@RequestBody Feedback feedback) {
+    public ResponseEntity<Feedback> addFeedback(@Valid @RequestBody Feedback feedback) {
         return new ResponseEntity<>(feedbackService.saveFeedback(feedback), HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Feedback> replaceFeedback(@RequestBody Feedback feedback,
+    public ResponseEntity<Feedback> replaceFeedback(@Valid @RequestBody Feedback feedback,
                                                     @PathVariable("id") Integer id) {
         Feedback updatedFeedback = feedbackService.updateFeedback(feedback, id);
         if (updatedFeedback == null) {

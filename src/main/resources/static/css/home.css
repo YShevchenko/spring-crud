@@ -13,3 +13,17 @@ body {
     padding-top: 56px;
   }
 }
+
+.feedback-form{
+  padding-top: 56px;
+  width: 60%;
+}
+
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
