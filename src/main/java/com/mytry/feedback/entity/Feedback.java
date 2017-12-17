@@ -1,10 +1,11 @@
 package com.mytry.feedback.entity;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 import javax.persistence.*;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.Objects;
 
 @Entity
 public class Feedback {
@@ -14,18 +15,18 @@ public class Feedback {
     private Integer id;
 
     @NotNull
-    @Size(min=3, max=30)
+    @Size(min = 3, max = 30)
     private String author;
 
     @NotNull
-    @Size(max=200)
+    @Size(max = 200)
     private String summary;
     @Column(length = 2000)
     @Size(max = 2000)
     private String content;
 
     @NotNull
-    @Size(min=3, max=30)
+    @Size(min = 3, max = 30)
     private String subject;
     private Boolean recommend;
 
@@ -80,19 +81,31 @@ public class Feedback {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
+
         Feedback feedback = (Feedback) o;
-        return Objects.equals(id, feedback.id) &&
-                Objects.equals(author, feedback.author) &&
-                Objects.equals(summary, feedback.summary) &&
-                Objects.equals(content, feedback.content) &&
-                Objects.equals(subject, feedback.subject) &&
-                Objects.equals(recommend, feedback.recommend);
+
+        return new EqualsBuilder()
+                .append(id, feedback.id)
+                .append(author, feedback.author)
+                .append(summary, feedback.summary)
+                .append(content, feedback.content)
+                .append(subject, feedback.subject)
+                .append(recommend, feedback.recommend)
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, author, summary, content, subject, recommend);
+        return new HashCodeBuilder(17, 37)
+                .append(id)
+                .append(author)
+                .append(summary)
+                .append(content)
+                .append(subject)
+                .append(recommend)
+                .toHashCode();
     }
 
     @Override

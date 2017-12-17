@@ -1,4 +1,4 @@
-package com.mytry.feedback.controller;
+package com.mytry.feedback.controller.rest;
 
 import com.mytry.feedback.entity.Feedback;
 import com.mytry.feedback.service.FeedbackService;
@@ -36,7 +36,7 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbackService.saveFeedback(feedback), HttpStatus.CREATED);
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Feedback> replaceFeedback(@Valid @RequestBody Feedback feedback,
                                                     @PathVariable("id") Integer id) {
         Feedback updatedFeedback = feedbackService.updateFeedback(feedback, id);

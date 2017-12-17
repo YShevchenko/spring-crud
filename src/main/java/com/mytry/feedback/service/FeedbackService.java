@@ -14,23 +14,23 @@ public class FeedbackService {
         this.feedbackRepository = feedbackRepository;
     }
 
-    public Feedback getFeedback(Integer id){
+    public Feedback getFeedback(Integer id) {
         return feedbackRepository.findOne(id);
     }
 
-    public List<Feedback> getAllFeedbacks(){
+    public List<Feedback> getAllFeedbacks() {
         return feedbackRepository.findAll();
     }
 
-    public Feedback saveFeedback(Feedback feedback){
+    public Feedback saveFeedback(Feedback feedback) {
         return feedbackRepository.save(feedback);
     }
 
-    public void deleteFeedback(Integer id){
+    public void deleteFeedback(Integer id) {
         feedbackRepository.delete(id);
     }
 
-    public Feedback updateFeedback(Feedback feedbackToUpdate, Integer id){
+    public Feedback updateFeedback(Feedback feedbackToUpdate, Integer id) {
         Feedback foundFeedback = feedbackRepository.findOne(id);
         if (foundFeedback != null) {
             feedbackToUpdate.setId(id);
@@ -40,7 +40,7 @@ public class FeedbackService {
         }
     }
 
-    public List<Feedback> searchBySubjectContains(String subject){
+    public List<Feedback> findBySubjectContains(String subject) {
         return feedbackRepository.findBySubjectContains(subject);
     }
 }
