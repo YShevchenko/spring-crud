@@ -6,7 +6,7 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Feedbacks</title>
     <th:block th:include="layout/header"></th:block>
 </head>
 
@@ -20,9 +20,7 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
 
-            <h1 class="my-4">Page Heading
-                <small>Secondary Text</small>
-            </h1>
+            <h1 class="my-4">Existing entries</h1>
 
             <!--Feedbacks-->
             <div th:if="${not #lists.isEmpty(feedbacks)}">
@@ -67,15 +65,14 @@
 
 </div>
 <!-- /.container -->
+</body>
 
 <!-- Footer -->
-<footer class="py-5 bg-dark">
+<footer class="py-5 fixed-bottom">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+        <p class="m-0 text-center text-white">&copy; Feedback portal 2017</p>
     </div>
     <!-- /.container -->
 </footer>
-
-</body>
 
 </html>
